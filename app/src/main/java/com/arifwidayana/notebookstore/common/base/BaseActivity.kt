@@ -11,7 +11,7 @@ import javax.inject.Inject
 
 abstract class BaseActivity<VB: ViewBinding, VM: ViewModel>(
     private val bindingFactory: (LayoutInflater) -> VB
-): BaseContract, AppCompatActivity() {
+): BaseContract.Activity, AppCompatActivity() {
     private var _binding: VB? = null
     protected val binding: VB get() = _binding!!
     @Inject
