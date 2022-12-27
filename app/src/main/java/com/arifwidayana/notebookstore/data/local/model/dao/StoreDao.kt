@@ -12,7 +12,7 @@ interface StoreDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertItem(storeEntity: StoreEntity)
 
-    @Query("SELECT * FROM store_table")
+    @Query("SELECT * FROM store_table ORDER BY updated_at ASC")
     fun getItem(): Flow<List<StoreEntity>>
 
     @Query("SELECT * FROM store_table WHERE id = :idItem")
