@@ -2,6 +2,7 @@ package com.arifwidayana.notebookstore.presentation.ui.login
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.arifwidayana.notebookstore.common.utils.Constant
 import com.arifwidayana.notebookstore.common.wrapper.Resource
 import com.arifwidayana.notebookstore.data.local.model.entity.UserEntity
 import com.arifwidayana.notebookstore.data.local.model.request.user.LoginRequest
@@ -18,7 +19,21 @@ class LoginViewModel @Inject constructor(
     private val loginRepository: LoginRepository
 ) : LoginContract, ViewModel() {
     private val _loginUserResult = MutableStateFlow<Resource<UserEntity>>(Resource.Empty())
+    private val _getNameResult = MutableStateFlow<Resource<Unit>>(Resource.Empty())
     override val loginUserResult: StateFlow<Resource<UserEntity>> = _loginUserResult
+    override val getNameResult: StateFlow<Resource<Unit>> = _getNameResult
+
+    override fun getName() {
+        viewModelScope.launch {
+            loginRepository.getName().collect {
+                if (it.data != Constant.NAME_PREF) {
+                    _getNameResult.value = Resource.Success()
+                } else {
+                    _getNameResult.value = Resource.Error()
+                }
+            }
+        }
+    }
 
     override fun loginUser(loginRequest: LoginRequest) {
         viewModelScope.launch {

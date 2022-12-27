@@ -7,5 +7,7 @@ import kotlinx.coroutines.flow.StateFlow
 
 interface LoginContract {
     val loginUserResult: StateFlow<Resource<UserEntity>>
+    val getNameResult: StateFlow<Resource<Unit>>
+    fun getName()
     fun loginUser(loginRequest: LoginRequest)
 }

@@ -14,6 +14,7 @@ import javax.inject.Inject
 interface LoginRepository {
     suspend fun loginUser(loginRequest: LoginRequest): Flow<Resource<UserEntity>>
     suspend fun setName(name: String): Flow<Resource<Unit>>
+    suspend fun getName(): Flow<Resource<String>>
 }
 
 class LoginRepositoryImpl @Inject constructor(
@@ -26,5 +27,9 @@ class LoginRepositoryImpl @Inject constructor(
 
     override suspend fun setName(name: String): Flow<Resource<Unit>> = flow {
         emit(proceed { userPreferenceDatasource.setName(name) })
+    }
+
+    override suspend fun getName(): Flow<Resource<String>> = flow {
+        emit(proceed { userPreferenceDatasource.getName().first() })
     }
 }

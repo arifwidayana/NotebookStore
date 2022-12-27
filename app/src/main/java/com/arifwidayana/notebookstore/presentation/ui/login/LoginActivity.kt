@@ -31,15 +31,31 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(
     }
 
     override fun observeData() {
-        lifecycleScope.launchWhenStarted {
-            viewModel.loginUserResult.collect {
-                if(it is Resource.Success) {
-                    startActivity(Intent(this@LoginActivity, MainActivity::class.java))
-                    finish()
-                } else if (it is Resource.Error) {
-                    showMessageSnackBar(true, it.message)
+        lifecycleScope.apply {
+            launchWhenStarted {
+                viewModel.loginUserResult.collect {
+                    if(it is Resource.Success) {
+                        startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                        finish()
+                    } else if (it is Resource.Error) {
+                        showMessageSnackBar(true, it.message)
+                    }
+                }
+            }
+
+            launchWhenStarted {
+                viewModel.getNameResult.collect {
+                    if (it is Resource.Success) {
+                        startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                        finish()
+                    }
                 }
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.getName()
     }
 }
