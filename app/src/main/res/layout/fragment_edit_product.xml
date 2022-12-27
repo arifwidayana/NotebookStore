@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="24dp"
+    tools:context=".presentation.ui.edit.EditProductFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="12dp"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/tv_add_product"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:paddingHorizontal="64dp"
+            android:layout_marginHorizontal="24dp"
+            android:text="@string/edit_product"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tf_name_product"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toEndOf="@id/tv_add_product"
+            app:layout_constraintStart_toStartOf="@id/tv_add_product"
+            app:layout_constraintTop_toBottomOf="@id/tv_add_product">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_name_product"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:hint="@string/product_name"
+                android:maxLines="1" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tf_amount_product"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toEndOf="@id/tv_add_product"
+            app:layout_constraintStart_toStartOf="@id/tv_add_product"
+            app:layout_constraintTop_toBottomOf="@id/tf_name_product"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_amount_product"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/amount_product"
+                android:inputType="number"
+                android:maxLines="1" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tf_supplier"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toEndOf="@id/tv_add_product"
+            app:layout_constraintStart_toStartOf="@id/tv_add_product"
+            app:layout_constraintTop_toBottomOf="@id/tf_amount_product"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_supplier"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:hint="@string/supplier"
+                android:inputType="text"
+                android:maxLines="1" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/tv_updated"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/updated_in"
+            android:textSize="12sp"
+            app:layout_constraintTop_toBottomOf="@id/tf_supplier"
+            app:layout_constraintStart_toStartOf="@id/tv_add_product"/>
+
+        <TextView
+            android:id="@+id/tv_added"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/added_in"
+            android:textSize="12sp"
+            app:layout_constraintTop_toBottomOf="@id/tv_updated"
+            app:layout_constraintStart_toStartOf="@id/tv_add_product"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.35"/>
+
+        <TextView
+            android:id="@+id/tv_updated_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/updated_in"
+            android:textSize="12sp"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toTopOf="@id/tv_updated"
+            app:layout_constraintStart_toEndOf="@id/guideline"/>
+
+        <TextView
+            android:id="@+id/tv_added_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/added_in"
+            android:textSize="12sp"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toTopOf="@id/tv_added"
+            app:layout_constraintStart_toEndOf="@id/guideline"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_submit"
+            android:layout_width="0dp"
+            android:layout_height="?actionBarSize"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/green"
+            android:text="@string/submit"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toEndOf="@id/tv_add_product"
+            app:layout_constraintStart_toStartOf="@id/tv_add_product"
+            app:layout_constraintTop_toBottomOf="@id/tv_added" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_delete"
+            android:layout_width="0dp"
+            android:layout_height="?actionBarSize"
+            android:layout_marginBottom="36dp"
+            android:backgroundTint="@color/red"
+            android:text="@string/remove"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toEndOf="@id/tv_add_product"
+            app:layout_constraintStart_toStartOf="@id/tv_add_product"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_submit" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
