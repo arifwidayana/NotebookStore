@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">Notebook Store</string>
+    <string name="name">Name</string>
+    <string name="sign_in">Sign In</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="save">Save</string>
+    <string name="submit">Submit</string>
+    <string name="supplier">Supplier</string>
+    <string name="amount_product">Amount Product</string>
+    <string name="product_name">Product Name</string>
+    <string name="add_product">Add Product</string>
+    <string name="edit_product">Edit Product</string>
+    <string name="amount">Amount</string>
+    <string name="updated_in">Updated in</string>
+    <string name="added_in">Added in</string>
+    <string name="remove">Remove</string>
+    <string name="profile_user">Profile User</string>
+    <string name="logout">Logout</string>
 </resources>
